@@ -109,7 +109,7 @@ package
 		protected var channel:SoundChannel;
 		protected var recordingStartTime = 0;
 		protected var lastRecordDuration : int = 0;
-		protected static var sampleRate = 44.1;
+		protected static var sampleRate = 16;
 		
 		protected var wavData : ByteArray;
 		protected var lastEncoding : ByteArray;
@@ -442,7 +442,8 @@ package
 				if(!microphone){
 					logger.log('setupMicrophone');
 					microphone = Microphone.getMicrophone();
-					microphone.codec = "Nellymoser";
+					microphone.codec = "Speex";
+					microphone.encodeQuality = 6;
 					microphone.setSilenceLevel(0);
 					microphone.rate = sampleRate;
 					microphone.gain = 50;
